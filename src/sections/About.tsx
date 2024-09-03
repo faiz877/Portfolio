@@ -8,70 +8,120 @@ import HTMLIcon from "@/assets/icons/html5.svg";
 import CSSIcon from "@/assets/icons/css3.svg";
 import ReactIcon from "@/assets/icons/react.svg";
 import GithubIcon from "@/assets/icons/github.svg";
+import { TechIcon } from "@/components/TechIcon";
+import mapImage from "@/assets/images/map.png";
+import smileMemoji from "@/assets/images/memoji-smile.png";
+import { CardHeader } from "@/components/CardHeader";
 
 const toolboxItems = [
   {
     title: "Javascript",
-    icon: <JavaScriptIcon />,
+    iconType: JavaScriptIcon,
   },
   {
     title: "HTML5",
-    icon: <HTMLIcon />,
+    iconType: HTMLIcon,
   },
   {
     title: "CSS",
-    icon: <CSSIcon />,
+    iconType: CSSIcon,
   },
   {
     title: "React",
-    icon: <ReactIcon />,
+    iconType: ReactIcon,
   },
   {
     title: "Github",
-    icon: <GithubIcon />,
+    iconType: GithubIcon,
   },
   {
     title: "Node",
-    icon: <GithubIcon />,
+    iconType: GithubIcon,
   },
   {
     title: "MongoDB",
-    icon: <GithubIcon />,
+    iconType: GithubIcon,
+  },
+];
+
+const hobbies = [
+  {
+    title: "Football",
+    emoji: "⚽",
+  },
+  {
+    title: "Film",
+    emoji: "🎬",
+  },
+  {
+    title: "Music",
+    emoji: "🎧",
+  },
+  {
+    title: "Reading",
+    emoji: "📚",
+  },
+  {
+    title: "Gaming",
+    emoji: "🎮",
   },
 ];
 
 export const AboutSection = () => {
   return (
-    <div className="pb-96">
-      <SectionHeader
-        eyebrow="About Me"
-        title="A Glimpse Into My World"
-        description="Learn more about who I am, what I do and what inspires me"
-      ></SectionHeader>
-      <div>
-        <Card>
-          <div>
-            <StarIcon></StarIcon>
-            <h3>My Reads</h3>
-            <p>Explore the Books</p>
-          </div>
-          <Image src={bookImage} alt="Book Cover"></Image>
-        </Card>
-        <Card>
-          <div>
-            <StarIcon></StarIcon>
-            <h3>My ToolBox</h3>
-            <p>Explore the technologies and tools I use</p>
-          </div>
-          <div>
-            {toolboxItems.map((item) => (
-              <div key={item.title}>
-                <span>{item.icon}</span>
-                <span>{item.title}</span>
-              </div>
-            ))}
-          </div>
-        </Card>
+    <div className="py-20">
+      <div className="container">
+        <SectionHeader
+          eyebrow="About Me"
+          title="A Glimpse Into My World"
+          description="Learn more about who I am, what I do and what inspires me"
+        ></SectionHeader>
+        <div className="mt-20">
+          <Card className="h-[320px]">
+            <CardHeader
+              title="My Reads"
+              description="Explore the books that shape my perspective"
+            ></CardHeader>
+            <div className="w-30 mx-auto mt-8">
+              <Image src={bookImage} alt="Book Cover"></Image>
+            </div>
+          </Card>
+          <Card>
+            <CardHeader
+              title="My ToolBox"
+              description="Explore the technologies and tools I use to build cool stuff"
+            ></CardHeader>
+            <div>
+              {toolboxItems.map((item) => (
+                <div
+                  key={item.title}
+                  className="inline-flex items-center gap-4 py-2 px-3 outline outline-2 outline-white/10 rounded-lg"
+                >
+                  <TechIcon component={item.iconType}></TechIcon>
+                  <span className="font-semibold">{item.title}</span>
+                </div>
+              ))}
+            </div>
+          </Card>
+          <Card>
+            <CardHeader
+              title="Beyond The Code"
+              description="Explore my interests and hobbies"
+            ></CardHeader>
+            <div>
+              {hobbies.map((hobby) => (
+                <div key={hobby.title}>
+                  <span>{hobby.title}</span>
+                  <span>{hobby.emoji}</span>
+                </div>
+              ))}
+            </div>
+          </Card>
+          <Card>
+            <Image src={mapImage} alt="map"></Image>
+            <Image src={smileMemoji} alt="smile"></Image>
+          </Card>
+        </div>
       </div>
     </div>
   );

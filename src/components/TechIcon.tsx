@@ -1,3 +1,8 @@
-export const TechIcon = () => {
-  return <div>TechIcon</div>;
+export const TechIcon = ({ component }: { component: React.ElementType }) => {
+  const Component = component;
+  return (
+    <div>
+      <Component className="size-10"></Component>
+    </div>
+  );
 };
