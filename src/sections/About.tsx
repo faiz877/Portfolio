@@ -1,6 +1,5 @@
 import { SectionHeader } from "@/components/SectionHeader";
 import { Card } from "@/components/Card";
-import StarIcon from "@/assets/icons/star.svg";
 import bookImage from "@/assets/images/book-cover.png";
 import Image from "next/image";
 import JavaScriptIcon from "@/assets/icons/square-js.svg";
@@ -8,10 +7,10 @@ import HTMLIcon from "@/assets/icons/html5.svg";
 import CSSIcon from "@/assets/icons/css3.svg";
 import ReactIcon from "@/assets/icons/react.svg";
 import GithubIcon from "@/assets/icons/github.svg";
-import { TechIcon } from "@/components/TechIcon";
 import mapImage from "@/assets/images/map.png";
 import smileMemoji from "@/assets/images/memoji-smile.png";
 import { CardHeader } from "@/components/CardHeader";
+import { ToolBoxItems } from "@/components/ToolBoxItems";
 
 const toolboxItems = [
   {
@@ -86,22 +85,14 @@ export const AboutSection = () => {
               <Image src={bookImage} alt="Book Cover"></Image>
             </div>
           </Card>
-          <Card>
+          <Card className="h-[320px] p-0">
             <CardHeader
               title="My ToolBox"
               description="Explore the technologies and tools I use to build cool stuff"
+              className="px-6 pt-6"
             ></CardHeader>
-            <div>
-              {toolboxItems.map((item) => (
-                <div
-                  key={item.title}
-                  className="inline-flex items-center gap-4 py-2 px-3 outline outline-2 outline-white/10 rounded-lg"
-                >
-                  <TechIcon component={item.iconType}></TechIcon>
-                  <span className="font-semibold">{item.title}</span>
-                </div>
-              ))}
-            </div>
+            <ToolBoxItems items={toolboxItems} className="mt-6"></ToolBoxItems>
+            <ToolBoxItems items={toolboxItems} className="mt-6"></ToolBoxItems>
           </Card>
           <Card>
             <CardHeader
